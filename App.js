@@ -53,6 +53,17 @@ export default function SyedAIApp() {
   const handleSendMessage = async (textToSend) => {
     const messageText = textToSend || input;
     if (!messageText.trim()) return;
+    // সবার আগে ক্রিয়েটর সংক্রান্ত প্রশ্ন চেক করা
+    let aiReply = "";
+    if (messageText.includes('কে বানিয়েছে') || messageText.includes('কে তৈরি করেছে') || messageText.includes('কে বানাইছে')) {
+      aiReply = "আমাকে তৈরি করেছেন আমার ক্রিয়েটর, সৈয়দ!";
+    } else if (messageText.includes('কেমন আছো') || messageText.includes('কেমন আসিস')) {
+      aiReply = "আলহামদুলিল্লাহ, আপনার সাথে কথা বলে খুব ভালো লাগছে। আপনি কেমন আছেন বলুন?";
+    } else if (messageText.includes('দুঃখিত') || messageText.includes('মন খারাপ')) {
+      aiReply = "আপনার মন খারাপ শুনে আমারও খুব খারাপ লাগছে। একটু খুলে বলুন না, কী হয়েছে? আমি সবসময় আপনার পাশে আছি।";
+    } else {
+      aiReply = "আপনার কথাটি আমি বুঝতে পেরেছি। বলুন, এ বিষয়ে আর কীভাবে সাহায্য করতে পারি?";
+    }
 
     const newMessages = [...messages, { role: 'user', content: messageText }];
     setMessages(newMessages);
