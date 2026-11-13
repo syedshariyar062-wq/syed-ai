@@ -68,6 +68,9 @@ export default function SyedAIApp() {
       } else if (messageText.includes('দুঃখিত') || messageText.includes('মন খারাপ')) {
         aiReply = "আপনার মন খারাপ শুনে আমারও খুব খারাপ লাগছে। একটু খুলে বলুন না, কী হয়েছে? আমি সবসময় আপনার পাশে আছি।";
       }
+      else if (messageText.includes('কে বানিয়েছে') || messageText.includes('কে তৈরি করেছে')) {
+      aiReply = "আমাকে তৈরি করেছেন আমার ক্রিয়েটর, সৈয়দ!";
+      }
 
       setMessages([...newMessages, { role: 'assistant', content: aiReply }]);
       speakResponse(aiReply);
